@@ -68,6 +68,7 @@ export const Section1 = {
   QVEIntroduce: styled.div`
     display: flex;
     flex-direction: column;
+    gap: 0.8rem;
     & > h1 {
       ${({ theme }) => theme.fonts.kumbh_snas_22};
       color: ${({ theme }) => theme.colors.deep_dark_green};
@@ -188,10 +189,10 @@ export const Section2 = {
     margin: 6.4rem 0 12.8rem;
     display: flex;
     justify-content: center;
-    gap: 8rem;
+    gap: 5rem;
 
     @media (${({ theme }) => theme.breakpoints.tablet}) {
-      gap: 8rem;
+      gap: 5rem;
     }
     @media (${({ theme }) => theme.breakpoints.mobile}) {
       flex-direction: column;

@@ -1,14 +1,7 @@
 import Header from '../common/components/Header';
 import * as St from './Onboarding.style.tsx';
 
-import {
-  Botanix,
-  onboarding3,
-  onboarding3_mobile,
-  yuccaLogoOnce,
-  yuccafiBackground,
-} from './assets/0_index';
-import { ABOUTQVE } from './constants/constants.ts';
+import { Botanix, yuccaLogoOnce, yuccafiBackground } from './assets/0_index';
 import TradeNowBtn from './components/TradeNowBtn.tsx';
 import Footer from '../common/components/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
@@ -20,8 +13,10 @@ import { formatPriceValue } from '../common/utils/formatPriceValue.ts';
 
 import styled from '@emotion/styled';
 import LinkBtns from './components/LinkBtns.tsx';
+import OnBoarding2 from './components/frames/Onboarding2.tsx';
+import OnBoarding3 from './components/frames/Onboarding3.tsx';
 
-interface IOnboardingProps {
+export interface IOnboardingProps {
   isMobile: boolean;
 }
 
@@ -106,7 +101,7 @@ const OnBoarding = () => {
 
 const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
   const base_url = import.meta.env.VITE_BASE_URL;
-  const [totalValueLocked, setTotalValueLocked] = useState('130.00');
+  const [totalValueLocked, setTotalValueLocked] = useState('');
 
   useEffect(() => {
     getData();
@@ -175,106 +170,6 @@ const OnBoarding1 = ({ isMobile }: IOnboardingProps) => {
         )}
       </St.Section1.Bottom>
     </St.Section1.Container>
-  );
-};
-
-const OnBoarding2 = ({ isMobile }: IOnboardingProps) => {
-  return (
-    <St.Section2.Container>
-      <p>About yucca.fi</p>
-      <St.Title>Optimizing Yields in the Layer 2 on Bitcoin Ecosystem</St.Title>
-      <St.Section2.Contents>
-        {isMobile ? (
-          <>
-            {ABOUTQVE.map((item) => {
-              return (
-                <St.Mobile.SectionItemBox key={item.keyWord}>
-                  <item.icon style={{ width: '2.4rem', height: '2.4rem' }} />
-                  <St.Mobile.AboutItem>{item.title}</St.Mobile.AboutItem>
-                  <St.Mobile.Explain>{item.explain}</St.Mobile.Explain>
-                </St.Mobile.SectionItemBox>
-              );
-            })}
-          </>
-        ) : (
-          <>
-            {ABOUTQVE.map((item, idx) => {
-              let rotateValue = 22.5;
-              let translateYValue = 8;
-              switch (idx) {
-                case 0:
-                  rotateValue = -rotateValue;
-                  translateYValue;
-                  break;
-                case 1:
-                  rotateValue = 0;
-                  translateYValue = 0;
-                  break;
-                case 2:
-                  rotateValue;
-                  translateYValue;
-                  break;
-                default:
-                  rotateValue = 0;
-              }
-              return (
-                <St.Section2.Wrapper
-                  key={item.keyWord}
-                  style={{
-                    transform: `rotate(${rotateValue}deg) translateY(${translateYValue}rem)`,
-                  }}
-                >
-                  <St.Section2.AboutItem>
-                    <St.Section2.IconContainer>
-                      <item.icon />
-                      <span>{item.keyWord}</span>
-                    </St.Section2.IconContainer>
-                    <St.Section2.AbouItemLayout>
-                      <St.Section2.ItemTitle>
-                        {item.title}
-                      </St.Section2.ItemTitle>
-                      <St.Section2.Explain>{item.explain}</St.Section2.Explain>
-                    </St.Section2.AbouItemLayout>
-                  </St.Section2.AboutItem>
-                </St.Section2.Wrapper>
-              );
-            })}
-          </>
-        )}
-      </St.Section2.Contents>
-    </St.Section2.Container>
-  );
-};
-
-const OnBoarding3 = ({ isMobile }: IOnboardingProps) => {
-  return (
-    <St.Section3.Container>
-      <St.Section3.InTro>
-        {isMobile ? (
-          <St.PreTitle>Vaults Trading bots</St.PreTitle>
-        ) : (
-          <St.PreTitle>
-            Yucca.fi offers various ‘vaults’, which are operated by the trading
-            bots
-          </St.PreTitle>
-        )}
-        <St.Title>Assets Into The Vault</St.Title>
-        <St.Section3.SubTitle>
-          ( Arbitrage is one of the strategies we use )
-        </St.Section3.SubTitle>
-      </St.Section3.InTro>
-      {isMobile ? (
-        <img
-          style={{ width: '38.2rem', margin: '6.4rem 0 13rem' }}
-          src={onboarding3_mobile}
-        />
-      ) : (
-        <img
-          style={{ width: '120rem', margin: '6.4rem 0 13rem' }}
-          src={onboarding3}
-        />
-      )}
-    </St.Section3.Container>
   );
 };
 

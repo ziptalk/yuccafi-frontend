@@ -124,10 +124,10 @@ const StContainer = styled.header<{ isHeaderBgActive: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: linear-gradient(to bottom, #f8f2fc 80%, #f8f2fc 100%); */
-  backdrop-filter: blur(15px);
   background-color: ${({ isHeaderBgActive, theme }) =>
     isHeaderBgActive ? theme.colors.background : 'transparent'};
+  backdrop-filter: ${({ isHeaderBgActive }) =>
+    isHeaderBgActive ? '' : 'blur(15px)'};
   z-index: 10;
   padding: 0;
   margin: 0;
